@@ -5,7 +5,7 @@ Using config file will be convenient and safe time.
 There is a simple config parser in c++.    
 ***
 ### How To Use
-    Just inlucde it!
+    Just inlucde ConfigHandler.h 
 ### Config File Format
 #### Example (Key=Value)
     myName=weissle
