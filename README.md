@@ -45,15 +45,19 @@ bool b = CH.getBoolValue("bool test 1");  //  b=true
 ```c
 str = CH.getStrValue("A key word not exists","ABC"); //str="ABC"
 ```
-#### When you have a default value , I recommand you use below function (exclude you want a bool value,it always return false)
+#### When you have a default value , I recommand you use below function so that you do not need to specify what you want.
+#### (exclude you want a bool value,it always return false)
 ```c
 c = CH.getValue("A key word not exists",'p');   //c='p'
 f = CH.getValue("A key word not exists" , 5.02); //f=5.02
-i = CH.getValue("int test",15);                //i=20;
+i = CH.getValue("int test",15);                //i=20
+str = CH.getValue("int test","15");            //str="20"
 ```
 #### There are two convenient functions.
 ```c
 CH("int test") >> i;// i=20;
+CH("int test") >> f;// f=20.0;
+CH("int test") >> str;// str="20";
 CH("A key word not exists",50) >> i; //i =50;
 ```
 ### Warning
