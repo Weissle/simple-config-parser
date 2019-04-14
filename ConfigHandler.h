@@ -3,7 +3,7 @@
 #include <iostream>
 #include <fstream>
 #include <algorithm>
-
+#include <sstream>
 using namespace std;
 
 
@@ -89,9 +89,6 @@ inline stringstream& ConfigHandler::operator()(const KeyT key, const AnsT _defau
 		if (typeid(char) == typeid(AnsT)) defaultStr = string(1, _default);
 		else defaultStr = to_string(_default);
 		stream << defaultStr << " ";
-/*		auto AnsTid = typeid(_default);
-		if (typeid(int)==AnsTid || typeid(long long) == AnsTid || typeid(unsigned int) == AnsTid) defalutStr = string(itoa(_default));
-		else(typeid(float) == AnsTid||typeid(double) == AnsTid) defalutStr = string(ftoa)*/
 	}
 	else stream << config[str] << " ";
 	return stream;
