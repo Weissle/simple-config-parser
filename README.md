@@ -23,7 +23,7 @@ There is a simple config parser in c++.
     bool test   = true
 #### Constructor Function
 ```c
-ConfigHandler(string configFilePath, bool caseSensitive = false, char spiltChar = '=');
+ConfigHandler(std::string configFilePath, bool caseSensitive = false, char spiltChar = '=');
 ```
 #### Initialize
 ```c
