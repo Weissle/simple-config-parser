@@ -20,7 +20,7 @@ class ConfigHandler {
 public:
 	ConfigHandler() {};
 	~ConfigHandler() {};
-	ConfigHandler(string configFilePath, char _spiltChar = '=', bool _caseSensitive = false):
+	ConfigHandler(string configFilePath, bool _caseSensitive = false, char _spiltChar = '='):
 		spiltChar(_spiltChar), caseSensitive(_caseSensitive){
 		buildConfig(configFilePath.c_str());
 	}
@@ -72,7 +72,7 @@ inline AnsT ConfigHandler::getValue(const KeyT key, const AnsT _default)
 	try {
 		stream >> answer;
 	}
-	catch () {
+	catch (int e) {
 		answer = _default;
 	}
 	return answer;
