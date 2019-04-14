@@ -20,7 +20,7 @@ class ConfigHandler {
 public:
 	ConfigHandler() {};
 	~ConfigHandler() {};
-	ConfigHandler(string configFilePath, char _spiltChar = '=', bool _caseSensitive = false):
+	ConfigHandler(string configFilePath, bool _caseSensitive = false, char _spiltChar = '='):
 		spiltChar(_spiltChar), caseSensitive(_caseSensitive){
 		buildConfig(configFilePath.c_str());
 	}
