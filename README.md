@@ -12,12 +12,12 @@ There is a simple config parser in c++.
     myPet=wata
     AInteger=48
 #### Neglect case (Including key and value). You can choose case sensitive or not.(See below)
-#### Ignore all space.    
+#### Ignore All Space.    
     my Name = wei ss LE => myname=weissle
     my P e T = w a TA   => mypet=wata
   
 ## Tutorial
-#### config file
+#### Config File
     STR TEST    = hel l o
     int test    = 20
     float test  = 5.3
@@ -35,7 +35,9 @@ ConfigHandler CH(configFilePath, true);
 //if your spiltChar is not  '=' , the third parameter should be set to another char (eg.)
 ConfigHandler CH(configFilePath, false, '-');
 ```
-#### Fundamental Function (Of course, the string you passed will be remove all space and all letter will become lower if you choose case insensitive)
+#### Five Fundamental Function
+#### Of course, the string you passed will be remove all space and all letter will become lower if you choose case insensitive
+    variable = getTypeValue(KeyStr,default_value); //default_value can be omitted
 ```c
 std::string str = CH.getStrValue("STRtest");   //  str="hello"
 int i = CH.getIntValue("inttest");        //  i=20;   
@@ -43,12 +45,9 @@ double f = CH.getFloatValue("float test");//  f=5.3
 char c = CH.getCharValue("char test");    //  c='a'
 bool b = CH.getBoolValue("bool test 1");  //  b=true 
 ```
-#### All of them accept the second parameter as a default.
-```c
-str = CH.getStrValue("A key word not exists","ABC"); //str="ABC"
-```
 #### When you have a default value , I recommand you use below function so that you do not need to specify what you want.
-#### (exclude you want a bool value,it always return false)
+#### Exclude you want a bool value,it always return false.
+    getValue(KeyStr,default_value);
 ```c
 c = CH.getValue("A key word not exists",'p');   //c='p'
 f = CH.getValue("A key word not exists" , 5.02); //f=5.02
@@ -56,6 +55,9 @@ i = CH.getValue("int test",15);                //i=20
 str = CH.getValue("int test","15");            //str="20"
 ```
 #### There are two convenient functions.
+    Just something like cin ;
+    CH(KeyStr) >> variable;
+    CH(KeyStr,default_value) >> variable;
 ```c
 CH("int test") >> i;// i=20;
 CH("int test") >> f;// f=20.0;
