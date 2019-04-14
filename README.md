@@ -52,7 +52,7 @@ bool b = CH.getBoolValue("bool test 1");  //  b=true
 c = CH.getValue("A key word not exists",'p');   //c='p'
 f = CH.getValue("A key word not exists" , 5.02); //f=5.02
 i = CH.getValue("int test",15);                //i=20
-str = CH.getValue("int test","15");            //str="20"
+str = CH.getValue("int test",std::string("15"));            //str="20"
 ```
 #### There are two convenient functions.
     Just something like cin ;
