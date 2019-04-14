@@ -4,6 +4,8 @@ It is tired that if user need to type in so many parameter every time.
 Using config file will be convenient and safe time.  
 There is a simple config parser in c++.    
 ***
+### How To Use
+    Just inlucde it!
 ### Config File Format
 #### Example (Key=Value)
     myName=weissle
