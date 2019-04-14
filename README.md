@@ -45,7 +45,7 @@ double f = CH.getFloatValue("float test");//  f=5.3
 char c = CH.getCharValue("char test");    //  c='a'
 bool b = CH.getBoolValue("bool test 1");  //  b=true 
 ```
-#### When you have a default value , I recommand you use below function so that you do not need to specify what you want.
+#### When you pass a default value , I recommand you use below function so that you do not need to specify what type of return you want.
 #### Exclude you want a bool value,it always return false.
     getValue(KeyStr,default_value);
 ```c
