@@ -47,7 +47,7 @@ public:
 template<class KeyT>
 inline stringstream& ConfigHandler::operator()(const KeyT key)
 {
-
+	stream.str("");
 	auto str = inputDeal(key);
 	stream << config[str] << " ";
 	return stream;
@@ -65,6 +65,7 @@ inline string ConfigHandler::inputDeal(str input)
 template<class KeyT, class AnsT>
 inline AnsT ConfigHandler::getValue(const KeyT key, const AnsT _default)
 {
+	stream.str("");
 	auto str = inputDeal(key);
 	if (config.find(str) == config.end()) return _default;
 	else stream << config[str] << " ";
@@ -72,7 +73,7 @@ inline AnsT ConfigHandler::getValue(const KeyT key, const AnsT _default)
 	try {
 		stream >> answer;
 	}
-	catch () {
+	catch (int e) {
 		answer = _default;
 	}
 	return answer;
@@ -81,8 +82,18 @@ inline AnsT ConfigHandler::getValue(const KeyT key, const AnsT _default)
 template<class KeyT, class AnsT>
 inline stringstream& ConfigHandler::operator()(const KeyT key, const AnsT _default)
 {
+	stream.str("");
 	auto str = inputDeal(key);
-	stream << config[str] << " ";
+	if (config.find(str) == config.end()) {
+		string defaultStr;
+		if (typeid(char) == typeid(AnsT)) defaultStr = string(1, _default);
+		else defaultStr = to_string(_default);
+		stream << defaultStr << " ";
+/*		auto AnsTid = typeid(_default);
+		if (typeid(int)==AnsTid || typeid(long long) == AnsTid || typeid(unsigned int) == AnsTid) defalutStr = string(itoa(_default));
+		else(typeid(float) == AnsTid||typeid(double) == AnsTid) defalutStr = string(ftoa)*/
+	}
+	else stream << config[str] << " ";
 	return stream;
 }
 void ConfigHandler::buildConfig(const char *path) {
