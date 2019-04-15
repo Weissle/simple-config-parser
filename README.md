@@ -58,12 +58,13 @@ str = CH.getValue("int test",std::string("15"));            //str="20"
 #### There are two convenient functions.
     Just something like cin ;
     CH(KeyStr) >> variable;
+    //In below function,default_value's type should be char* or string ,variable's type can be int,float,etc.
     CH(KeyStr,default_value) >> variable;
 ```c
 CH("int test") >> i;// i=20;
 CH("int test") >> f;// f=20.0;
 CH("int test") >> str;// str="20";
-CH("A key word not exists",50) >> i; //i =50;
+CH("A key word not exists","50") >> i; //i =50;
 ```
 ### Warning
     If you want a bool value, I suggest you get a string type return first and then handle it by yourself.
