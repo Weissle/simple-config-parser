@@ -17,17 +17,17 @@ There is a simple config parser in c++.
     my P e T = w a TA   => mypet=wata
   
 ## Tutorial
-#### Config File
+### Config File
     STR TEST    = hel l o
     int test    = 20
     float test  = 5.3
     char test   = a
     bool test   = true
-#### Constructor Function
+### Constructor Function
 ```c
 ConfigHandler(std::string configFilePath, bool caseSensitive = false, char spiltChar = '=');
 ```
-#### Initialize
+### Initialize
 ```c
 ConfigHandler CH(configFilePath);
 //if you care about the case , the second parameter should be set to'true'
@@ -35,18 +35,19 @@ ConfigHandler CH(configFilePath, true);
 //if your spiltChar is not  '=' , the third parameter should be set to another char (eg.)
 ConfigHandler CH(configFilePath, false, '-');
 ```
-#### Five Fundamental Function
+### Five Fundamental Function
 #### Of course, the string you passed will be remove all space and all letter will become lower if you choose case insensitive
-    variable = getTypeValue(KeyStr,default_value); //default_value can be omitted
+    variable = getTypeValue(KeyStr,default_value); //Default_value can be omitted
+    Type should be replaced by Int,Float,Str,Char or Bool.
 ```c
 std::string str = CH.getStrValue("STRtest");   //  str="hello"
 int i = CH.getIntValue("inttest");        //  i=20;   
-double f = CH.getFloatValue("float test");//  f=5.3
+double f = CH.getFloatValue("float test", 9.0);//  f=5.3
 char c = CH.getCharValue("char test");    //  c='a'
-bool b = CH.getBoolValue("bool test 1");  //  b=true 
+bool b = CH.getBoolValue("bool test ", false);  //  b=true 
 ```
 #### When you pass a default value , I recommand you use below function so that you do not need to specify what type of return you want.
-#### Exclude you want a bool value,it always return false.
+#### Excluding  bool value,it always return false.
     getValue(KeyStr,default_value);
 ```c
 c = CH.getValue("A key word not exists",'p');   //c='p'
