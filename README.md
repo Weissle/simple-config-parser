@@ -35,6 +35,7 @@ ConfigHandler CH(configFilePath, false, '-');
 ### Variables' Name Used Below And Its' Type
     i-int, d-double, c-char, b-bool, f-float, str-string.
 ### There Are Two Convenient Functions.
+#### Of course, the string you passed will be remove all space and all letter will become lower if you choose case insensitive
     Just something like cin ;
     CH(KeyStr) >> variable;
     CH(KeyStr,default_value) >> variable;
@@ -45,9 +46,8 @@ CH("int test") >> str;// str="20";
 CH("A key word not exists",50) >> i; //i =50;
 ```
 ### In Case You Want To Assign When You Define A Variable.
-#### Of course, the string you passed will be remove all space and all letter will become lower if you choose case insensitive
     variable = CH.getTypeValue(KeyStr,default_value); //default_value can be omitted
-    variable = CH.getValue(KeyStr,defalut_value);     //default_value cannot be omitted,and it do not support get bool value
+    variable = CH.getValue(KeyStr,defalut_value);     //default_value cannot be omitted,and it does not support get bool value
     Type should be replaced by Int,Float,Str,Char or Bool.
 ```c
 std::string str = CH.getStrValue("STRtest");   //  str="hello"
