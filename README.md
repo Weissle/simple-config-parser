@@ -1,7 +1,7 @@
 # simple-config-parser
 Sometimes grogram need numerous parameter to decide what to do and how to run.  
-It is tired that if user need to type in so many parameter every time.  
-Using config file will be convenient and safe time.  
+It is tired that if user need to type in many parameters every time.  
+Using config file will be convenient and save time.  
 There is a simple config parser in c++.    
 ***
 ### How To Use
@@ -24,10 +24,7 @@ There is a simple config parser in c++.
     char test   = a
     bool test   = true
 ### Constructor Function
-```c
-ConfigHandler(std::string configFilePath, bool caseSensitive = false, char spiltChar = '=');
-```
-### Initialize
+    ConfigHandler(std::string configFilePath, bool caseSensitive = false, char spiltChar = '=');
 ```c
 ConfigHandler CH(configFilePath);
 //if you care about the case , the second parameter should be set to'true'
@@ -35,30 +32,11 @@ ConfigHandler CH(configFilePath, true);
 //if your spiltChar is not  '=' , the third parameter should be set to another char (eg.)
 ConfigHandler CH(configFilePath, false, '-');
 ```
-### Five Fundamental Function
-#### Of course, the string you passed will be remove all space and all letter will become lower if you choose case insensitive
-    variable = getTypeValue(KeyStr,default_value); //Default_value can be omitted
-    Type should be replaced by Int,Float,Str,Char or Bool.
-```c
-std::string str = CH.getStrValue("STRtest");   //  str="hello"
-int i = CH.getIntValue("inttest");        //  i=20;   
-double f = CH.getFloatValue("float test", 9.0);//  f=5.3
-char c = CH.getCharValue("char test");    //  c='a'
-bool b = CH.getBoolValue("bool test ", false);  //  b=true 
-```
-#### When you pass a default value , I recommand you use below function so that you do not need to specify what type of return you want.
-#### Excluding  bool value,it always return false.
-    getValue(KeyStr,default_value);
-```c
-c = CH.getValue("A key word not exists",'p');   //c='p'
-f = CH.getValue("A key word not exists" , 5.02); //f=5.02
-i = CH.getValue("int test",15);                //i=20
-str = CH.getValue("int test","15");            //str="20"
-```
-#### There are two convenient functions.
+### Variables' Name Used Below And Its' Type
+    i-int, d-double, c-char, b-bool, str-std::string.
+### There Are Two Convenient Functions.
     Just something like cin ;
     CH(KeyStr) >> variable;
-    //In below function,default_value's type should be char* or string ,variable's type can be int,float,etc.
     CH(KeyStr,default_value) >> variable;
 ```c
 CH("int test") >> i;// i=20;
@@ -66,6 +44,23 @@ CH("int test") >> f;// f=20.0;
 CH("int test") >> str;// str="20";
 CH("A key word not exists",50) >> i; //i =50;
 ```
+### In Case You Want To Assign When You Define A Variable.
+#### Of course, the string you passed will be remove all space and all letter will become lower if you choose case insensitive
+    variable = CH.getTypeValue(KeyStr,default_value); //default_value can be omitted
+    variable = CH.getValue(KeyStr,defalut_value);     //default_value cannot be omitted,and it do not support get bool value
+    Type should be replaced by Int,Float,Str,Char or Bool.
+```c
+std::string str = CH.getStrValue("STRtest");   //  str="hello"
+int i = CH.getIntValue("inttest");        //  i=20;   
+double f = CH.getFloatValue("float test", 9.0);//  f=5.3
+char c = CH.getCharValue("char test");    //  c='a'
+bool b = CH.getBoolValue("bool test ", false);  //  b=true 
+c = CH.getValue("A key word not exists",'p');   //c='p'
+f = CH.getValue("A key word not exists" , 5.02); //f=5.02
+i = CH.getValue("int test",15);                //i=20
+str = CH.getValue("int test","15");            //str="20"
+```
+
 ### Warning
     If you want a bool value, I suggest you get a string type return first and then handle it by yourself.
     Because I have not yet figured out a good method to handle bool type.
