@@ -53,7 +53,7 @@ bool b = CH.getBoolValue("bool test ", false);  //  b=true
 c = CH.getValue("A key word not exists",'p');   //c='p'
 f = CH.getValue("A key word not exists" , 5.02); //f=5.02
 i = CH.getValue("int test",15);                //i=20
-str = CH.getValue("int test",std::string("15"));            //str="20"
+str = CH.getValue("int test","15");            //str="20"
 ```
 #### There are two convenient functions.
     Just something like cin ;
@@ -64,11 +64,11 @@ str = CH.getValue("int test",std::string("15"));            //str="20"
 CH("int test") >> i;// i=20;
 CH("int test") >> f;// f=20.0;
 CH("int test") >> str;// str="20";
-CH("A key word not exists","50") >> i; //i =50;
+CH("A key word not exists",50) >> i; //i =50;
 ```
 ### Warning
     If you want a bool value, I suggest you get a string type return first and then handle it by yourself.
-    Because I have not yet figure out a good method to handle bool type.
+    Because I have not yet figured out a good method to handle bool type.
     For now,getBoolValue function will return false when the key word is not defined or the value is a exact "false" string.
     If anyone have a good solution about that,it would be appreciated if you tell me.
 
