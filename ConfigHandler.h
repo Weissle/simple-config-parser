@@ -20,21 +20,20 @@ class ConfigHandler {
 public:
 	ConfigHandler() {};
 	~ConfigHandler() {};
-	ConfigHandler(string configFilePath, bool _caseSensitive = false, char _spiltChar = '='):
-		spiltChar(_spiltChar), caseSensitive(_caseSensitive){
+	ConfigHandler(string configFilePath, bool _caseSensitive = false, char _spiltChar = '=') :
+		spiltChar(_spiltChar), caseSensitive(_caseSensitive) {
 		buildConfig(configFilePath.c_str());
 	}
-	ConfigHandler(const char *configFilePath) {
-		buildConfig(configFilePath);
-	}
+
 	bool buildOK() { return configFileGet; }
-	template<class KeyT,class AnsT>
-	AnsT getValue(const KeyT key, const AnsT _default);
 	template<class KeyT, class AnsT>
-	stringstream& operator()(const KeyT key, const AnsT _default);
+	AnsT getValue(const KeyT key, const AnsT _default);
+	template<class KeyT>
+	stringstream& operator()(const KeyT key, const string _default);
+
 	template<class KeyT>
 	stringstream& operator()(const KeyT);
-	
+
 	string getStrValue(const string key, const string _default = string(""));
 	int getIntValue(const string key, const int _default = 0);
 	double getFloatValue(const string key, const double _default = 0);
@@ -67,7 +66,7 @@ inline AnsT ConfigHandler::getValue(const KeyT key, const AnsT _default)
 {
 	stream.str("");
 	auto str = inputDeal(key);
-	if (config.find(str) == config.end()) return _default;
+	if (config.find(str) == config.end())	return _default;
 	else stream << config[str] << " ";
 	AnsT answer;
 	try {
@@ -79,16 +78,13 @@ inline AnsT ConfigHandler::getValue(const KeyT key, const AnsT _default)
 	return answer;
 
 }
-template<class KeyT, class AnsT>
-inline stringstream& ConfigHandler::operator()(const KeyT key, const AnsT _default)
+template<class KeyT>
+inline stringstream& ConfigHandler::operator()(const KeyT key, const string _default)
 {
 	stream.str("");
 	auto str = inputDeal(key);
-	if (config.find(str) == config.end()) {
-		string defaultStr;
-		if (typeid(char) == typeid(AnsT)) defaultStr = string(1, _default);
-		else defaultStr = to_string(_default);
-		stream << defaultStr << " ";
+	if (config.find(str) == config.end()) {	
+		stream << _default << " ";
 	}
 	else stream << config[str] << " ";
 	return stream;
