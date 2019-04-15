@@ -11,7 +11,7 @@ There is a simple config parser in c++.
     myName=weissle
     myPet=wata
     AInteger=48
-#### Neglect case (Including key and value). You can choose case sensitive or not.(See below)
+#### Neglect case (By default,including key and value). You can choose case sensitive or not.(See below)
 #### Ignore All Space.    
     my Name = wei ss LE => myname=weissle
     my P e T = w a TA   => mypet=wata
