@@ -120,7 +120,7 @@ inline stringstream& ConfigHandler::operator()(const string key)
 	return stream;
 }
 
-template<class string, class AnsT>
+template<class AnsT>
 inline AnsT ConfigHandler::getValue(const string key, const AnsT _default)
 {
 	stream.str("");
