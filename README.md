@@ -41,7 +41,7 @@ ConfigHandler CH(configFilePath, false, '-');
     CH(KeyStr,default_value) >> variable;
 ```c
 CH("int test") >> i;// i=20;
-CH("int test") >> f;// f=20.0;
+CH("float test") >> f;// f=5.3;
 CH("int test") >> str;// str="20";
 CH("A key word not exists",50) >> i; //i =50;
 ```
