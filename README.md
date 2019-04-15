@@ -33,7 +33,7 @@ ConfigHandler CH(configFilePath, true);
 ConfigHandler CH(configFilePath, false, '-');
 ```
 ### Variables' Name Used Below And Its' Type
-    i-int, d-double, c-char, b-bool, str-std::string.
+    i-int, d-double, c-char, b-bool, f-float, str-string.
 ### There Are Two Convenient Functions.
     Just something like cin ;
     CH(KeyStr) >> variable;
