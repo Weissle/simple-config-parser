@@ -1,6 +1,6 @@
 # simple-config-parser
-Sometimes grogram need numerous parameter to decide what to do and how to run.  
-It is tired that if user need to type in many parameters every time.  
+Sometimes program need numerous parameters to decide what to do and how to run.  
+It is tired that if user need to type in so many parameters every time.  
 Using config file will be convenient and save time.  
 There is a simple config parser in c++.    
 ***
